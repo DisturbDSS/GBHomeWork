@@ -42,11 +42,27 @@ int main()
             XO cPlayer1, cPlayer2;
 
 
-        };
+        };    
 
     };
 
+
     //task5
+   
+    union Data { int a; float b; char c; };
+
+    struct Variant
+    {
+        Data U1;
+        unsigned int flag : 1;
+        unsigned int flag : 2;
+        unsigned int flag : 3;
+    };
+    Variant A, B, C;
+    C.U1.b = 2.1;
+    B.flag = true;
+    A.U1.a = 34;
+
 
 
     return 0;
