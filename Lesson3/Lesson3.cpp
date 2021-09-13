@@ -37,10 +37,6 @@ int main()
         std::cout << "Value on pointer: " << x << std::endl;
     };
     
-
-
- 
-
     //task 4
     {
         extern const int a, b, c, d;
