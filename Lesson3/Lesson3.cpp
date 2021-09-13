@@ -27,10 +27,14 @@ int main()
 
     //task3
     {
-         int array[3][3][3] = { 5 };
-         int* ptr = nullptr;
-
-
+        int x;
+        int arr[3][3][3] = { { {1, 2, 3}, {1, 2, 3}, {1, 2, 3} },
+                           { {3, 2, 1}, {3, 99, 1}, {3, 2, 1} },
+                           { {3, 4, 5}, {5, 4, 3}, {4, 3, 5} } };
+        int* pArr = nullptr;
+        pArr = &arr[1][1][1];
+        x = *pArr;
+        std::cout << "Value on pointer: " << x << std::endl;
     };
     
 
