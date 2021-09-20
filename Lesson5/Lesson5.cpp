@@ -130,14 +130,14 @@ int main()
         const int arrsize = 8;
         int origin[arrsize] = { 1, 4, 7, 10, 13, 16, 19, 22 };
 
-        if (nShift <= arrsize)
+        if (nShift <= arrsize && nShift>= 0)
         {
             shift(origin, arrsize, nShift);
             printOut(origin, arrsize);
         }
 
         else
-            cout << "Number is out of range!";
+            cout << "Number is out of range!" << endl;
 
     }
 
