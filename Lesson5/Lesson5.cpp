@@ -58,6 +58,41 @@ void shift(int* arr, int size, int nShift) ////task4function
 }
 
 
+bool checkBalance(int* arr, int size) ////task5function
+{
+    int leftside, rightside;
+    for (int i = 0; i < size; i++)
+    {
+        leftside = 0;
+        rightside = 0;
+
+        int arrleft;
+        for (arrleft = 0; arrleft < i; arrleft++)
+        {
+            leftside += arr[arrleft];
+        }
+
+        int arrright;
+        for (arrright = arrleft; arrright < size; arrright++)
+        {
+            rightside += arr[arrright];
+        }
+
+        if (leftside == rightside)
+
+        {
+            cout << "True, balanced" << endl;
+            return true;
+        }
+
+        
+        
+    }
+    cout << "False, NOT balanced" << endl;
+
+}
+
+
 int main()
 {
     {   //task1
@@ -103,6 +138,17 @@ int main()
 
         else
             cout << "Number is out of range!";
+
+    }
+
+
+    {
+        //task5
+        const int arrsize = 6;
+        int arr5[arrsize] = { 1, 2, 3, 3, 2, 1 };
+
+        printOut(arr5, arrsize);
+        checkBalance(arr5, arrsize);
 
     }
 
