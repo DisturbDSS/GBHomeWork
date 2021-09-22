@@ -15,38 +15,36 @@ void buildArray(int* ptrArr, int n) //task1func
 	cout << endl << "Printed " << n << " values..." << endl;
 }
 
-int** allocMemory(size_t n, size_t m)
+int** allocMemory(size_t m, size_t n) //task2func
 {
-	int** ptrArr = new (nothrow) int* [n];
-	for (size_t i = 0; i < 0; i++)
+	int** ptrArr = new (nothrow) int* [m];
+	for (size_t i = 0; i < m; i++)
 	{
-		ptrArr[i] = new (nothrow) int[m]; //arrays n in m
+		ptrArr[i] = new (nothrow) int[n]; //arrays n in m
 	}
 	return ptrArr;
 }
 
-void buildRandArray(int* ptrArr, int sizeM, int sizeN) //task2func
+int** buildRandArray(size_t sizeM, size_t sizeN) //task2func
 {
 	for (size_t i = 0; i < sizeM; i++)
 	{
-		for (size_t i = 0; i < sizeN; i++)
+		for (size_t j = 0; j < sizeN; j++)
 		{
-			ptrArr[i] = rand() % 99;
-			cout << ptrArr[i] << " ";
+			ptrArr[i][j] = rand() % 99;
 		}
-		cout << endl;
 	}
-	cout << endl;
-
+	return ptrArr;
 }
 
-void deleteArray(int** ptrArr, size_t n) //task2func
+void deleteArray(int** ptrArr, size_t m) //task2func
 {
-	for (size_t i = 0; i < n; i++)
+	for (size_t i = 0; i < m; i++)
 	{
 		delete[] ptrArr[i];
 	}
 	delete[] ptrArr;
+	ptrArr = nullptr;
 }
 
 int main()
@@ -75,18 +73,22 @@ int main()
 
 	//task2
 	{
-		int** ptrArr;
-		const size_t m = 7, n = 4; //matrix 4x4
-		//memory allocation
-		ptrArr = new (nothrow) int* [m]; //array of pointers for n
-		for (size_t i = 0; i < m; i++)
-		{
-			ptrArr[i] = new (nothrow) int[n]; //arrays n in m
-		}
-		cout << endl;
-		buildRandArray(*ptrArr, m, n);
+		size_t m, n; //matrix m x n
+		cout << "Enter m: ";
+		cin >> m;
+		cout << "Enter n: ";
+		cin >> n;
 
+		//memory allocation
+		int** ptrArr = allocMemory(m, n);
+
+		cout << endl;
+		buildRandArray(ptrArr, m, n);
 		
+
+		deleteArray(ptrArr, m);
+
+		return 0;
 		
 	}
 
