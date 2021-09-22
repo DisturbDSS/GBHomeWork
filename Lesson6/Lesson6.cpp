@@ -25,7 +25,7 @@ int** allocMemory(size_t m, size_t n) //task2func
 	return ptrArr;
 }
 
-int** buildRandArray(size_t sizeM, size_t sizeN) //task2func
+int** buildRandArray(int** ptrArr, size_t sizeM, size_t sizeN) //task2func
 {
 	for (size_t i = 0; i < sizeM; i++)
 	{
