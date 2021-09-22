@@ -25,7 +25,7 @@ int** allocMemory(size_t m, size_t n) //task2func
 	return ptrArr;
 }
 
-int** buildRandArray(int** ptrArr, size_t sizeM, size_t sizeN) //task2func
+void buildRandArray(int** ptrArr, size_t sizeM, size_t sizeN) //task2func
 {
 	for (size_t i = 0; i < sizeM; i++)
 	{
@@ -34,7 +34,19 @@ int** buildRandArray(int** ptrArr, size_t sizeM, size_t sizeN) //task2func
 			ptrArr[i][j] = rand() % 99;
 		}
 	}
-	return ptrArr;
+
+}
+
+void printMatrix(int** ptrArr, size_t sizeN, size_t sizeM)
+{
+	for (size_t i = 0; i < sizeN; ++i) 
+	{
+		for (size_t j = 0; j < sizeM; ++j) 
+		{
+			cout << ptrArr[i][j] << ' ';
+		}
+		cout << endl;
+	}
 }
 
 void deleteArray(int** ptrArr, size_t m) //task2func
@@ -84,19 +96,14 @@ int main()
 
 		cout << endl;
 		buildRandArray(ptrArr, m, n);
-		
+
+		printMatrix(ptrArr, m, n);
 
 		deleteArray(ptrArr, m);
 
 		return 0;
 		
 	}
-
-
-
-
-
-
 
 
 
