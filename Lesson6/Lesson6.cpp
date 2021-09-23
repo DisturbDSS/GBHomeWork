@@ -1,5 +1,7 @@
 ﻿
 #include <iostream>
+#include <fstream>
+
 
 using namespace std;
 
@@ -37,7 +39,7 @@ void buildRandArray(int** ptrArr, size_t sizeM, size_t sizeN) //task2func
 
 }
 
-void printMatrix(int** ptrArr, size_t sizeN, size_t sizeM)
+void printMatrix(int** ptrArr, size_t sizeN, size_t sizeM) //task2func
 {
 	for (size_t i = 0; i < sizeN; ++i) 
 	{
@@ -101,12 +103,28 @@ int main()
 
 		deleteArray(ptrArr, m);
 
-		return 0;
 		
 	}
 
+	//task3
+	{
+		const size_t size = 75;
+		int arrayToFile[size];
+		ofstream fout1("readme.txt", ios_base::app);
+		ofstream fout2("readmeagain.txt", ios_base::app);
+			for (size_t i = 0; i < size; ++i)
+			{
+				arrayToFile[i] = rand() % 75;
+				fout1 << "elem[" << i << "] = " << arrayToFile[i] << endl;
+				fout2 << "elem[" << i << "] = " << arrayToFile[i] * (rand() % 10) << endl;
+			}
+			fout1.close();
+			fout2.close();
 
+	//task4
 
+	}
 
+	return 0;
 }
 
