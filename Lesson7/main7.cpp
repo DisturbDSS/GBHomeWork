@@ -82,7 +82,7 @@ int main()
 
 	//task4
 	{
-		auto* strc = new Employee;
+		auto strc = new Employee;
 		cout << "Your file size: " << sizeof(Employee) << " bytes" << endl;
 
 		string fname = "employee.txt";
@@ -95,7 +95,6 @@ int main()
 		}
 		else 
 		{
-			fout.write((char*)strc, sizeof(strc));
 			cout << "Error..." << endl;
 		}
 		
