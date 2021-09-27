@@ -1,3 +1,4 @@
+
 #pragma once
 
 namespace taskLib
@@ -7,5 +8,4 @@ namespace taskLib
 	float* inputArray(float array[], size_t size);
 	void printArrayf(float array[], size_t size);
 	int* bubbleSort(int array[], size_t size);
-
 }

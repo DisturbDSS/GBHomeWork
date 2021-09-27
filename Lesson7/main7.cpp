@@ -14,12 +14,26 @@ using namespace taskLib;
 #pragma pack(push, 1)
 struct Employee
 {
-	char FullName[255];
-	char Address[255];
-	short int ID;
-	long long Phone;
+	char FullName[32];
+	char ID[16];
+	char Phone[16];
 };
 #pragma pack(pop)
+
+void outputf1(ofstream& f, char a[32], char b[16], char c[16], string fname)//write function
+
+{
+	f.open(fname);//open file
+		  //Check if opened successfully
+	if (f.fail()) {
+		cout << "\n File can't be opened";
+		exit(1);
+	}
+	f << "Name: " << a << endl;//write to the file
+	f << "ID: " << b << endl;
+	f << "Phone: " << c << endl;
+	f.close();
+}
 
 int main()
 {
@@ -82,25 +96,33 @@ int main()
 
 	//task4
 	{
+		
+
 		auto strc = new Employee;
 		cout << "Your file size: " << sizeof(Employee) << " bytes" << endl;
 
+		int const elmnt = 1;
+		Employee content[elmnt];
+
+		for (int i = 0; i < elmnt; ++i)
+		{
+			cout << "Enter full name: " << endl;
+			cin >> content[i].FullName;
+			cout << "Enter ID: " << endl;
+			cin >> content[i].ID;
+			cout << "Enter phone number: " << endl;
+			cin >> content[i].Phone;
+		}
+
+		ofstream f1;
+
 		string fname = "employee.txt";
-		ofstream fout(fname, ios_base::app);
-		fout.open(fname);
+		for (int i = 0; i < elmnt; ++i)
+		{
+			outputf1(f1, content[i].FullName, content[i].ID, content[i].Phone, fname);
+		}
 
-		if (fout.is_open())
-		{
-			fout.write ((char*)strc, sizeof(strc));	
-		}
-		else 
-		{
-			cout << "Error..." << endl;
-		}
-		
-		fout.close();
 		delete strc;
-
 	}
 
 	return 0;
