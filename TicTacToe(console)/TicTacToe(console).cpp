@@ -49,7 +49,7 @@ void __fastcall initGame(Game & g) //allocate memory
 		g.ppField[i] = new Cell[g.SIZE]; //allocate memory for array (which contains pointers)
 	}
 												
-	for (size_t y = 0; y < g.SIZE; y++) // fill out with empty  "---"		
+	for (size_t y = 0; y < g.SIZE; y++) // fill out with empty  "-"		
 	{
 		for (size_t x = 0; x < g.SIZE; x++) //  _________x
 		{									//	|
@@ -336,28 +336,27 @@ Coord getAICoord(Game & g)
 
 	return {};
 }
-bool checkGameField(const Game& g, Coord c, Cell cell) { //for debug
-	if (c.x > g.SIZE - 1) {
-		cout << "Error: wrong x coord";
+bool cheсkGameField(const Game& g, Coord c)
+{
+	if (c.x > g.SIZE - 1)
+	{
+		cout << "Error: wrong x coord" << endl;
 		return false;
 	}
 
-	if (c.y > g.SIZE - 1) {
-		cout << "Error: wrong y coord";
+	if (c.y > g.SIZE - 1)
+	{
+		cout << "Error: wrong y coord" << endl;
 		return false;
 	}
 
-	if (g.ppField[c.y][c.x] == EMPTY) {
-		g.ppField[c.y][c.x] = cell;
-		return true;
-	}
-	else {
-		cout << "Error: Field is not empty" << c.y << c.x;
+	if (g.ppField[c.y][c.x] != EMPTY)
+	{
+		cout << "Error: Field is not empty" << endl;
 		return false;
 	}
 
-	cout << "Unknown error";
-	return false;
+	return true;
 }
 
 
@@ -373,18 +372,20 @@ int main()
 		if (g.turn % 2 == 0)  //player's turn
 		{
 			Coord c = getPlayerCoord(g);
-			bool result = checkGameField(g, c, g.Player);
+			bool result = cheсkGameField(g, c);
 			if (!result) {
 				return 0;
 			}
+			g.ppField[c.y][c.x] = g.Player;
 		}
 		else //AI turn
 		{
 			Coord c = getAICoord(g);
-			bool result = checkGameField(g, c, g.AI);
+			bool result = cheсkGameField(g, c);
 			if (!result) {
 				return 0;
 			}
+			g.ppField[c.y][c.x] = g.AI;
 			this_thread::sleep_for(1500ms);
 		}
 
